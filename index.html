@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dicionário de Tecnologia</title>
+    <style>
+        /* Reset básico e estilo global */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .tree-container {
+            width: 100%;
+            max-width: 800px;
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo para os itens da árvore */
+        .tree ul {
+            list-style-type: none;
+            padding-left: 20px;
+            border-left: 1px solid #ddd;
+        }
+
+        .tree li {
+            position: relative;
+            padding: 10px 0 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* Destaque para item aberto ao passar o mouse */
+        .tree li.open:hover {
+            background-color: #e3f2fd;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .tree li:hover {
+            background-color: #f1f1f1;
+        }
+
+        .tree li::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 10px;
+            border-left: 1px solid #ddd;
+        }
+
+        .tree li > .toggle-box {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            background-color: #ddd;
+            border-radius: 3px;
+            font-weight: bold;
+            color: #333;
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+
+        .tree li > span {
+            font-weight: bold;
+            color: #333;
+            display: inline-block;
+        }
+
+        .tree li > p {
+            display: none;
+            margin-top: 5px;
+            padding-left: 30px; /* Alinhamento com o ícone de abrir/fechar */
+            color: #333;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .tree li.open > p {
+            display: block;
+        }
+
+        /* Estilo Responsivo */
+        /* Para tablets */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .tree-container {
+                padding: 10px;
+            }
+
+            .tree li {
+                padding: 8px 0 8px 18px;
+            }
+
+            .tree li > .toggle-box {
+                width: 18px;
+                height: 18px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Para smartphones */
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.75rem;
+            }
+
+            .tree-container {
+                padding: 8px;
+            }
+
+            .tree li {
+                padding: 6px 0 6px 15px;
+            }
+
+            .tree li > .toggle-box {
+                width: 16px;
+                height: 16px;
+                font-size: 0.8rem;
+            }
+
+            .tree li > p {
+                padding-left: 25px; /* Ajuste para smartphones */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Custobots</h1>        
+            <img src="https://media.licdn.com/dms/image/v2/D4D12AQGd2bzHBh6QDQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1708801191853?e=2147483647&v=beta&t=bIMZ7cuRL7po_aVfTZFeKYpyrLjWQoZHt8yWBcZiSts" alt="Descrição da imagem" style="max-width: 80%; height: auto;">
+        </a>
+    </header>
+    
+
+    <div class="tree-container">
+        <div class="tree">
+            <ul>
+                <li onclick="toggleDefinition(this)">
+                    <span class="toggle-box">+</span><span>Custobots</span>
+                    <p>Robôs virtuais que utilizam IA para atendimento direto ao cliente, oferecendo suporte 24/7 e respostas automáticas.</p>
+                    <ul>
+                        <li onclick="toggleDefinition(this)">
+                            <span class="toggle-box">+</span><span>Definição</span>
+                            <p>Robôs para suporte ao cliente, usando IA para interação personalizada e respostas automáticas.</p>
+                        </li>
+                        <li onclick="toggleDefinition(this)">
+                            <span class="toggle-box">+</span><span>Tecnologias</span>
+                            <p>Baseados em PLN, IA, e integração com banco de dados para interações fluidas e precisas.</p>
+                            <ul>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Processamento de Linguagem Natural (PLN)</span>
+                                    <p>Permite a compreensão e resposta a mensagens de forma natural.</p>
+                                </li>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Inteligência Artificial e Machine Learning</span>
+                                    <p>Capacitam os custobots a aprender com interações anteriores, melhorando respostas.</p>
+                                </li>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Análise de Sentimento</span>
+                                    <p>Identifica o tom emocional do cliente, ajustando a resposta conforme necessário.</p>
+                                </li>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Integração com API e Banco de Dados</span>
+                                    <p>Acesso em tempo real a dados do cliente, como histórico e status de pedidos.</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li onclick="toggleDefinition(this)">
+                            <span class="toggle-box">+</span><span>Funcionalidades</span>
+                            <ul>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Respostas a Perguntas Frequentes</span>
+                                    <p>Oferecem respostas imediatas para dúvidas comuns de clientes.</p>
+                                </li>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Orientação em Processos de Compra</span>
+                                    <p>Ajudam clientes a navegar por sites e realizar checkouts.</p>
+                                </li>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Assistência Pós-venda</span>
+                                    <p>Informam sobre status de pedidos e auxiliam em trocas e devoluções.</p>
+                                </li>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Personalização de Recomendações</span>
+                                    <p>Recomendam produtos ou serviços com base no histórico do cliente.</p>
+                                </li>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Coleta de Feedback</span>
+                                    <p>Coletam feedback para aprimorar o atendimento.</p>
+                                </li>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Compras Automáticas para Empresas</span>
+                                    <p>Executam compras automáticas para reabastecimento de estoque, integrando-se a sistemas de logística para otimizar a cadeia de suprimentos e evitar rupturas.</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li onclick="toggleDefinition(this)">
+                            <span class="toggle-box">+</span><span>Aplicações</span>
+                            <ul>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>E-commerce</span>
+                                    <p>Suporte ao cliente e acompanhamento de pedidos.</p>
+                                </li>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Bancos</span>
+                                    <p>Consultas de saldo e suporte a produtos financeiros.</p>
+                                </li>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Telecomunicações</span>
+                                    <p>Apoio em questões de planos e faturamento.</p>
+                                </li>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Saúde</span>
+                                    <p>Agendamento de consultas e informações sobre procedimentos.</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li onclick="toggleDefinition(this)">
+                            <span class="toggle-box">+</span><span>Benefícios</span>
+                            <ul>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Para Empresas</span>
+                                    <p>Reduzem custos, aumentam a escalabilidade e aprimoram o atendimento.</p>
+                                    <ul>
+                                        <li onclick="toggleDefinition(this)">
+                                            <span class="toggle-box">+</span><span>Redução de Custos</span>
+                                            <p>Automatizam tarefas simples, reduzindo a necessidade de operadores humanos.</p>
+                                        </li>
+                                        <li onclick="toggleDefinition(this)">
+                                            <span class="toggle-box">+</span><span>Escalabilidade</span>
+                                            <p>Atendem a um maior volume de clientes simultaneamente.</p>
+                                        </li>
+                                        <li onclick="toggleDefinition(this)">
+                                            <span class="toggle-box">+</span><span>Melhoria no Atendimento</span>
+                                            <p>Garantem respostas rápidas, aumentando a satisfação do cliente.</p>
+                                        </li>
+                                        <li onclick="toggleDefinition(this)">
+                                            <span class="toggle-box">+</span><span>Insights para aprimoramento</span>
+                                            <p>Coletam dados que ajudam a melhorar produtos e serviços.</p>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Para Clientes</span>
+                                    <ul>
+                                        <li onclick="toggleDefinition(this)">
+                                            <span class="toggle-box">+</span><span>Disponibilidade 24/7</span>
+                                            <p>Atendem de forma imediata, a qualquer hora.</p>
+                                        </li>
+                                        <li onclick="toggleDefinition(this)">
+                                            <span class="toggle-box">+</span><span>Atendimento Personalizado</span>
+                                            <p>Baseado no histórico e perfil do cliente.</p>
+                                        </li>
+                                        <li onclick="toggleDefinition(this)">
+                                            <span class="toggle-box">+</span><span>Navegação Facilitada</span>
+                                            <p>Guia o cliente, simplificando processos.</p>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li onclick="toggleDefinition(this)">
+                            <span class="toggle-box">+</span><span>Desafios e Limitações</span>
+                            <ul>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Técnicos</span>
+                                    <ul>
+                                        <li onclick="toggleDefinition(this)">
+                                            <span class="toggle-box">+</span><span>Compreensão de Contexto</span>
+                                            <p>Limitados em conversas complexas, podendo responder inadequadamente.</p>
+                                        </li>
+                                        <li onclick="toggleDefinition(this)">
+                                            <span class="toggle-box">+</span><span>Integração com Sistemas Legados</span>
+                                            <p>Integração pode ser difícil em sistemas antigos.</p>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Experiência</span>
+                                    <ul>
+                                        <li onclick="toggleDefinition(this)">
+                                            <span class="toggle-box">+</span><span>Interação Limitada</span>
+                                            <p>Difíceis em interações emocionais e complexas.</p>
+                                        </li>
+                                        <li onclick="toggleDefinition(this)">
+                                            <span class="toggle-box">+</span><span>Dependência de Dados</span>
+                                            <p>Precisam de dados atualizados para melhor desempenho.</p>
+                                        </li>
+                                        <li onclick="toggleDefinition(this)">
+                                            <span class="toggle-box">+</span><span>Preferência pelo Atendimento Humano</span>
+                                            <p>Alguns clientes ainda preferem o contato humano.</p>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li onclick="toggleDefinition(this)">
+                            <span class="toggle-box">+</span><span>Exemplos Reais</span>
+                            <ul>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Sephora</span>
+                                    <p>Recomendações de produtos de beleza.</p>
+                                </li>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>KLM Airlines</span>
+                                    <p>Informações e atualizações de voo.</p>
+                                </li>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Bank of America – Erica</span>
+                                    <p>Assistência financeira e insights.</p>
+                                </li>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Amazon Alexa Shopping</span>
+                                    <p>Permite compras automáticas por comando de voz, ajudando usuários a encontrar e comprar produtos no Amazon.com.</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li onclick="toggleDefinition(this)">
+                            <span class="toggle-box">+</span><span>Futuro dos Custobots</span>
+                            <ul>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Integração com Assistentes Virtuais</span>
+                                    <p>Possível integração com Alexa, Google Home e IoT.</p>
+                                </li>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Compreensão Emocional Aprimorada</span>
+                                    <p>Aprimorar resposta com base na emoção do cliente.</p>
+                                </li>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Uso de Realidade Aumentada e Virtual</span>
+                                    <p>Aplicações imersivas para e-commerce e turismo.</p>
+                                </li>
+                                <li onclick="toggleDefinition(this)">
+                                    <span class="toggle-box">+</span><span>Personalização Avançada com Big Data</span>
+                                    <p>Personalização mais precisa usando big data.</p>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleDefinition(element) {
+            event.stopPropagation();
+            element.classList.toggle("open");
+
+            // Alterna entre "+" e "-" na caixa de controle
+            const toggleBox = element.querySelector('.toggle-box');
+            toggleBox.textContent = element.classList.contains("open") ? "-" : "+";
+        }
+    </script>
+</body>
+</html>
